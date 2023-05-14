@@ -1,4 +1,6 @@
 import './App.css';
+import { useState } from 'react';
+import Loader from './Loader';
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition()
@@ -11,6 +13,7 @@ recognition.onresult = async function(event){
   transcript = transcript.toLowerCase();
   console.log(transcript);
   speakThis(transcript);
+  
 
 };
 
@@ -88,28 +91,27 @@ function speakThis(message) {
 
   window.speechSynthesis.speak(speech);
 }
-
-
-function startRecognition(){
-  console.log("Active");
-  recognition.start();
-};
-
-function endRecognition(){
-  console.log("Unactive");
-  recognition.stop();
-};
-
-
-
-
 function App() {
+  const [state,setState] = useState(false);
+  function startRecognition(){
+    console.log("Active");
+    recognition.start();
+    setState(true);
+  };
+  
+  function endRecognition(){
+    console.log("Unactive");
+    recognition.stop();
+    setState(false);
+  };
   return (
     <div className="App">
-      <h1> This is IRIS </h1>
-      <noscript>You need java script</noscript>
-      <button onClick={startRecognition}>Start</button>
-      <button onClick={endRecognition}>Stop</button>
+      <div class = "main">
+        <h1 class = "text-main"> This is IRIS </h1>
+        <Loader/>
+        <noscript>You need java script</noscript>
+        <button onClick={state ? endRecognition : startRecognition} class="button-46">{state ? 'Stop':'Start'}</button>
+      </div>
     </div>
   );
 }
