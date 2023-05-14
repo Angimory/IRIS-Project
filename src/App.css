@@ -1,27 +1,97 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Mono", monospace;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.text-main {
+  color :white
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.main {
   min-height: 100vh;
+  position: relative;
+  width: 100%;
+  background: #000;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+
+.main .image-container {
+  padding: 10px;
+}
+
+.heart-image {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main .image-container .image img {
+  width: 170px;
+  align-items: center;
+}
+
+.main .image-container h1 {
+  color: #00bcd4;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 40px;
+}
+
+.main .image-container p {
+  color: #324042;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+
+.button-46 {
+  align-items: center;
+  background-color: rgb(202 253 255 / 50%);
+  border-radius: 16px;
+  box-sizing: border-box;
+  color:white;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter, sans-serif;
+  font-size: 18px;
+  justify-content: center;
+  line-height: 8px;
+  max-width: 5%;
+  padding: 14px 22px;
+  text-decoration: none;
+  transition: all .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 1%;
+}
+
+.button-46:active,
+.button-46:hover {
+  outline: 0;
+}
+
+.button-46:hover {
+  background-color: rgba(176, 240, 242, 0.972);
+  border-color: rgba(0, 0, 0, 0.19);
+}
+
+@media (min-width: 768px) {
+  .button-46 {
+    font-size: 20px;
+    min-width: 200px;
+    padding: 14px 16px;
+  }
+}
+.App {
+  text-align: center;
 }
 
 .App-link {
