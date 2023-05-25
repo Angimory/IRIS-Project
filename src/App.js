@@ -5,6 +5,7 @@ import Loader from './Loader';
 function App() {
   const delay = require('delay');
   const [state,setState] = useState(false);
+  const [input, setInput] = useState("");
   function startRecognition(){
     console.log("Active");
     recognition.start();
@@ -119,6 +120,11 @@ function App() {
   speech.rate = 1;
 
   window.speechSynthesis.speak(speech);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    speakThis(input);
+    
+  }
 }
   return (
     <div className="App">
