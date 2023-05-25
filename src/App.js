@@ -2,8 +2,8 @@ import './App.css';
 import { useState } from 'react';
 import Loader from './Loader';
 
-
 function App() {
+  const delay = require('delay');
   const [state,setState] = useState(false);
   function startRecognition(){
     console.log("Active");
