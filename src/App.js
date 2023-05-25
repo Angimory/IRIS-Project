@@ -12,20 +12,21 @@ function App() {
     speakThis(input);
   }
   function startRecognition(){
-    console.log("Active");
     recognition.start();
     setState(true);
+    console.log(state);
   };
   
   function endRecognition(){
-    console.log("Unactive");
     recognition.stop();
     setState(false);
+    console.log(state);
   };
 
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   const recognition = new SpeechRecognition()
 
+  
   recognition.continuous = true;
   
   recognition.onresult = async function(event){
@@ -34,9 +35,16 @@ function App() {
     transcript = transcript.toLowerCase();
     console.log(transcript);
     speakThis(transcript);
-
   };
-  
+
+  recognition.onend = () => {
+   if (state === true){
+      recognition.start();
+    }
+    if (state === false){
+      recognition.stop();
+    }
+  }
   function speakThis(message) {
     const speech = new SpeechSynthesisUtterance();
 
