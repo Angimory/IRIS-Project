@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState} from 'react';
 import Loader from './Loader';
 import delay from 'delay';
 
@@ -7,28 +7,28 @@ function App() {
   const [state,setState] = useState(false);
   const [input, setInput] = useState("");
   
+  console.log(state);
+
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition()
+
   const handleSubmit = (event) => {
     event.preventDefault();
     speakThis(input);
   }
   function startRecognition(){
+    setState((current) => !current);
     recognition.start();
-    setState(true);
     console.log(state);
   };
   
   function endRecognition(){
+    setState((current) => !current);
     recognition.stop();
-    setState(false);
     console.log(state);
   };
 
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  const recognition = new SpeechRecognition()
 
-  
-  recognition.continuous = true;
-  
   recognition.onresult = async function(event){
     let current = event.resultIndex;
     let transcript = event.results[current][0].transcript;
@@ -36,14 +36,14 @@ function App() {
     console.log(transcript);
     speakThis(transcript);
   };
-
-  recognition.onend = () => {
+  recognition.continuous = true;
+  recognition.onend = function(){
    if (state === true){
-      recognition.start();
-    }
-    if (state === false){
-      recognition.stop();
-    }
+    recognition.start();
+   }
+    else if (state === false){
+    recognition.stop();
+   }
   }
   function speakThis(message) {
     const speech = new SpeechSynthesisUtterance();
@@ -90,13 +90,6 @@ function App() {
         window.open("https://instagram.com", "_blank");
         const finalText = "Opening instagram";
         speech.text = finalText;
-        delay(2000);
-    }
-
-    else if(message.includes('what is') || message.includes('who is') || message.includes('what are')) {
-        window.open(`https://www.google.com/search?q=${message.replace(" ", "+")}`, "_blank");
-        const finalText = "This is what i found on internet regarding " + message;
-        speech.text = finalText
         delay(2000);
     }
 
