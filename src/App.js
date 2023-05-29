@@ -2,11 +2,13 @@ import './App.css';
 import { useState} from 'react';
 import Loader from './Loader';
 import delay from 'delay';
+import axios from "axios";
+
 
 function App() {
   const [state,setState] = useState(false);
   const [input, setInput] = useState("");
-
+  
   console.log(state);
   
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
