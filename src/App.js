@@ -6,9 +6,9 @@ import delay from 'delay';
 function App() {
   const [state,setState] = useState(false);
   const [input, setInput] = useState("");
-  
-  console.log(state);
 
+  console.log(state);
+  
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   const recognition = new SpeechRecognition()
 
@@ -16,36 +16,58 @@ function App() {
     event.preventDefault();
     speakThis(input);
   }
+
+  let stoppingR = false;
+
   function startRecognition(){
     setState((current) => !current);
     recognition.start();
     console.log(state);
+    stoppingR = false;
   };
   
   function endRecognition(){
     setState((current) => !current);
-    recognition.stop();
     console.log(state);
+    stoppingR = true;
+    recognition.stop();
+    
   };
 
-
+  function toggle(){
+    if(state === true){
+      stoppingR = true;
+      endRecognition();
+      console.log("stop");
+    }else if (state === false){
+      startRecognition();
+      console.log("start");
+    }
+  }
   recognition.onresult = async function(event){
     let current = event.resultIndex;
     let transcript = event.results[current][0].transcript;
     transcript = transcript.toLowerCase();
-    console.log(transcript);
-    speakThis(transcript);
+    
+    if (transcript.includes("iris")){
+      let newTranscript = transcript.replace("iris", "")
+      console.log(newTranscript);
+      speakThis(newTranscript);
+    }
+    
   };
   recognition.continuous = true;
   
-  recognition.onend = function(){
-   if (state === true){
-    recognition.start();
-   }
-    else if (state === false){
-    recognition.stop();
-   }
-  }
+  recognition.onend = function () {
+    if (stoppingR === false) {
+      setTimeout(() => {
+        recognition.start();
+      }, 500);
+    } else if (stoppingR === true) {
+      recognition.stop();
+    }
+  };
+  
   function speakThis(message) {
     const speech = new SpeechSynthesisUtterance();
 
@@ -54,7 +76,7 @@ function App() {
     if(message.includes('hey') || message.includes('hello')) {
         const finalText = "Hello sir";
         speech.text = finalText;
-        delay(2000);
+        delay(4000);
     }
 
     else if(message.includes('how are you')) {
@@ -144,11 +166,11 @@ function App() {
 }
   return (
     <div className="App">
-      <div class = "main">
-        <h1 class = "text-main"> This is IRIS </h1>
+      <div className = "main">
+        <h1 className = "text-main"> This is IRIS </h1>
         <Loader/>
         <noscript>You need java script</noscript>
-        <button onClick={state ? endRecognition : startRecognition} class="button-46">{state ? 'Stop':'Start'}</button>
+        <button onClick={toggle} class="button-46">{state ? 'Stop':'Start'}</button>
         <form onSubmit={handleSubmit}>
           <label>Enter your name:
             <input 
