@@ -37,6 +37,7 @@ function App() {
     speakThis(transcript);
   };
   recognition.continuous = true;
+  
   recognition.onend = function(){
    if (state === true){
     recognition.start();
