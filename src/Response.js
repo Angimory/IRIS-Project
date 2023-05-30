@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import './App.css';
 
 function Response(){
     const [prompt, setPrompt] = useState("");

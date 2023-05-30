@@ -7,17 +7,11 @@ import Response from './Response';
 
 function App() {
   const [state,setState] = useState(false);
-  const [input, setInput] = useState("");
   
   console.log(state);
   
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   const recognition = new SpeechRecognition()
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    speakThis(input);
-  }
 
   let stoppingR = false;
 
@@ -173,16 +167,6 @@ function App() {
         <Loader/>
         <noscript>You need java script</noscript>
         <button onClick={toggle} class="button-46">{state ? 'Stop':'Start'}</button>
-        <form onSubmit={handleSubmit}>
-          <label>Enter your name:
-            <input 
-              type="text" 
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-            />
-          </label>
-          <input type="submit" />
-        </form>
       </div>
     </div>
   );
