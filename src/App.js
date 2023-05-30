@@ -2,7 +2,7 @@ import './App.css';
 import { useState} from 'react';
 import Loader from './Loader';
 import delay from 'delay';
-
+import sound from "./assets/sound.mp3"
 function App() {
   const [state,setState] = useState(false);
   const [input, setInput] = useState("");
@@ -16,7 +16,9 @@ function App() {
     event.preventDefault();
     speakThis(input);
   }
-
+  function play(){
+    new Audio(sound).play()
+  }
   let stoppingR = false;
 
   function startRecognition(){
@@ -24,6 +26,7 @@ function App() {
     recognition.start();
     console.log(state);
     stoppingR = false;
+    play();
   };
   
   function endRecognition(){
