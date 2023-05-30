@@ -167,6 +167,7 @@ function App() {
         <Loader/>
         <noscript>You need java script</noscript>
         <button onClick={toggle} class="button-46">{state ? 'Stop':'Start'}</button>
+        <Response/>
       </div>
     </div>
   );

@@ -10,11 +10,12 @@ function Response(){
     const handleSubmit = (e) => {
         e.preventDefault();
         // Send a request to the server with the prompt
-        axios.get("http://localhost:8080")
+        axios
           .post("/chat", { prompt })
           .then((res) => {
             // Update the response state with the server's response
-            this.setResponse(res.data);
+            setResponse(res.data);
+            console.log(response);
           })
           .catch((err) => {
             console.error(err);
@@ -31,7 +32,7 @@ function Response(){
             />
             <button type="submit">Submit</button>
           </form>
-          <p>{response}</p>
+          <p style={{color:"white"}}>{response}</p>
         </div>
       );
 }
