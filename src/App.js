@@ -3,7 +3,7 @@ import { useState} from 'react';
 import Loader from './Loader';
 import delay from 'delay';
 import axios from "axios";
-
+import Response from './Response';
 
 function App() {
   const [state,setState] = useState(false);
