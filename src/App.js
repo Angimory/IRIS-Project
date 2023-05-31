@@ -3,6 +3,8 @@ import { useState} from 'react';
 import Loader from './Loader';
 import axios from "axios";
 import Response from './Response';
+import sound from "./assets/sound.mp3"
+
 
 function App() {
   const [state,setState] = useState(false);
@@ -72,16 +74,19 @@ function App() {
     if(message.includes('hey') || message.includes('hello')) {
         const finalText = "Hello sir";
         speech.text = finalText;
+        
     }
 
     else if(message.includes('how are you')) {
         const finalText = "I am fine sir tell me how can i help you";
         speech.text = finalText;
+  
     }
 
     else if(message.includes('what is your name')) {
         const finalText = "My name is Iris";
         speech.text = finalText;
+ 
     }
 
     else if (message.includes("play")) {
@@ -98,46 +103,56 @@ function App() {
         window.open("https://google.com", "_blank");
         const finalText = "Opening Google";
         speech.text = finalText;
+  
+  
     }
 
     else if(message.includes('open instagram')) {
         window.open("https://instagram.com", "_blank");
         const finalText = "Opening instagram";
         speech.text = finalText;
+   
     }
 
     else if(message.includes('open wikipedia')) {
         window.open(`https://en.wikipedia.org/wiki/${message.replace("wikipedia", "")}`, "_blank");
         const finalText = "This is what i found on wikipedia regarding " + message;
         speech.text = finalText;
+   
     }
 
     else if(message.includes('time')) {
         const time = new Date().toLocaleString(undefined, {hour: "numeric", minute: "numeric"})
         const finalText = time;
         speech.text = finalText;
+       
     }
 
     else if(message.includes('date')) {
         const date = new Date().toLocaleString(undefined, {month: "short", day: "numeric"})
         const finalText = date;
         speech.text = finalText;
+      
     }
 
     else if(message.includes('calculator')) {
         window.open('Calculator:///')
         const finalText = "Opening Calculator";
         speech.text = finalText;
+     
+
     }
     else if(message.includes('turn off') || message.includes('shut down')) {
       endRecognition();
       const finalText = "Shutting Down";
       speech.text = finalText;
+    
     }
     else {
         window.open(`https://www.google.com/search?q=${message.replace(" ", "+")}`, "_blank");
         const finalText = "I found some information for " + message + " on google";
         speech.text = finalText;
+    
     }
 
   speech.volume = 1;
