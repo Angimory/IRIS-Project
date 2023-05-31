@@ -1,10 +1,9 @@
 import './App.css';
 import { useState} from 'react';
 import Loader from './Loader';
-import axios from "axios";
 import Response from './Response';
 import sound from "./assets/sound.mp3"
-
+import sound from "./assets/sound.mp3"
 
 function App() {
   const [state,setState] = useState(false);
@@ -13,7 +12,10 @@ function App() {
   
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   const recognition = new SpeechRecognition()
-
+  
+  function play(){
+    new Audio(sound).play()
+  }
   let stoppingR = false;
 
   function startRecognition(){
@@ -21,6 +23,7 @@ function App() {
     recognition.start();
     console.log(state);
     stoppingR = false;
+    play();
   };
   
   function endRecognition(){
