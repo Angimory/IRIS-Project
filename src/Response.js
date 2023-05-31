@@ -11,7 +11,7 @@ function Response(){
         e.preventDefault();
         // Send a request to the server with the prompt
         axios
-          .post("/chat", { prompt })
+          .post("http://localhost:8080/chat", { prompt })
           .then((res) => {
             // Update the response state with the server's response
             setResponse(res.data);
