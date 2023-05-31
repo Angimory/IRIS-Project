@@ -1,18 +1,20 @@
 import './App.css';
-import { useState} from 'react';
+import { useEffect, useState} from 'react';
 import Loader from './Loader';
-import Response from './Response';
+import {Response} from './Response';
 import sound from "./assets/sound.mp3"
-import sound from "./assets/sound.mp3"
+import axios from 'axios';
+import React from 'react';
 
 function App() {
   const [state,setState] = useState(false);
-  
+  const [answer,setAnswer] = useState("");
+  const [prompt,setPrompt] = useState("");
   console.log(state);
   
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   const recognition = new SpeechRecognition()
-  
+ 
   function play(){
     new Audio(sound).play()
   }
@@ -48,6 +50,7 @@ function App() {
   recognition.onresult = async function(event){
     let current = event.resultIndex;
     let transcript = event.results[current][0].transcript;
+    
     transcript = transcript.toLowerCase();
     
     if (transcript.includes("iris")){
@@ -72,21 +75,7 @@ function App() {
   function speakThis(message) {
     const speech = new SpeechSynthesisUtterance();
 
-    speech.text = "I did not understand what you said please try again";
-
-    if(message.includes('hey') || message.includes('hello')) {
-        const finalText = "Hello sir";
-        speech.text = finalText;
-        
-    }
-
-    else if(message.includes('how are you')) {
-        const finalText = "I am fine sir tell me how can i help you";
-        speech.text = finalText;
-  
-    }
-
-    else if(message.includes('what is your name')) {
+    if(message.includes('what is your name')) {
         const finalText = "My name is Iris";
         speech.text = finalText;
  
@@ -151,11 +140,8 @@ function App() {
       speech.text = finalText;
     
     }
-    else {
-        window.open(`https://www.google.com/search?q=${message.replace(" ", "+")}`, "_blank");
-        const finalText = "I found some information for " + message + " on google";
-        speech.text = finalText;
-    
+    else{
+      setPrompt(message);
     }
 
   speech.volume = 1;
@@ -164,7 +150,7 @@ function App() {
 
   window.speechSynthesis.speak(speech);
 
-}
+};
   return (
     <div className="App">
       <div className = "main">
@@ -172,9 +158,11 @@ function App() {
         <Loader/>
         <noscript>You need java script</noscript>
         <button onClick={toggle} class="button-46">{state ? 'Stop':'Start'}</button>
-        <Response/>
+        <Response prompt ={prompt}/>
       </div>
+        
     </div>
+    
   );
 }
 

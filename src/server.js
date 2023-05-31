@@ -22,12 +22,12 @@ app.post("/chat", async (req, res) => {
 
   // Generate a response with ChatGPT
   const completion = await openai.createCompletion({
-    model: "text-davinci-002",
+    model: "text-davinci-003",
     prompt: prompt,
-    temperature:0.6,
+    temperature:0.1,
+    max_tokens:400,
   });
   res.send(completion.data.choices[0].text);
-  console.log(res.data); 
 });
 
 // Start the server
