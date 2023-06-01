@@ -10,6 +10,7 @@ function App() {
   const [state,setState] = useState(false);
   const [answer,setAnswer] = useState("");
   const [prompt,setPrompt] = useState("");
+  const [message,setMessage] = useState("This is IRIS");
   console.log(state);
   
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -25,11 +26,13 @@ function App() {
     recognition.start();
     console.log(state);
     stoppingR = false;
+    setMessage("IRIS is listening...");
     play();
   };
   
   function endRecognition(){
     setState((current) => !current);
+    setMessage("This is IRIS");
     console.log(state);
     stoppingR = true;
     recognition.stop();
@@ -154,7 +157,7 @@ function App() {
   return (
     <div className="App">
       <div className = "main">
-        <h1 className = "text-main"> This is IRIS </h1>
+        <h1 className = "text-main"> {message}</h1>
         <Loader/>
         <noscript>You need java script</noscript>
         <button onClick={toggle} class="button-46">{state ? 'Stop':'Start'}</button>
