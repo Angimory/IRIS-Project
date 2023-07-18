@@ -1,6 +1,9 @@
-# This project is created with npm create-react-app
+# This project has two versions, the react js version and the react native version
 
-Use npm install openai to access the ai
+Used npms:
+  -npm install openai
+  -npm i axios
+  
 # IRIS Model 0.1 (2023 -05 -12):
 ![image](https://github.com/Angimory/IRIS-Project/assets/96160225/675f6e49-8138-488f-9bb4-fbf7e2ce50bc)
 Implemented:
