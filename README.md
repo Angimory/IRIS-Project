@@ -1,5 +1,6 @@
 # This project has two versions, the react js version and the react native version
-
+Click the link below to see flowchart:
+https://lucid.app/lucidspark/8f618fe9-b7b1-4c95-a871-8005cdc5f20d/edit?viewport_loc=-1366%2C1203%2C3755%2C1804%2C0_0&invitationId=inv_2144a701-2310-4561-b0e6-e2c006862667
 Used npms:
   -npm install openai
   -npm i axios
