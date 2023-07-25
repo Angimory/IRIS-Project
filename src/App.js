@@ -6,6 +6,8 @@ import {
 } from "react-router-dom";
 import Iris from "./Iris";
 import LoginPage from "./LoginPage";
+import Signup from "./Signup";
+
 function App() {
  
   return (
@@ -17,6 +19,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Iris/>} />
           <Route path="/LoginPage" element={<LoginPage/>} />
+          <Route path="/Signup" element={<Signup/>} />
         </Routes>
       </div>
     </Router>

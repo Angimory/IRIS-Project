@@ -4,13 +4,17 @@ import Loader from './Loader';
 import {Response} from './Response';
 import sound from "./assets/sound.mp3"
 import React from 'react';
-
+import { auth, signOut} from './firebase';
+import {
+  useNavigate,
+} from 'react-router-dom';
 
 const Iris = () => {
   const [state,setState] = useState(false);
   const [answer,setAnswer] = useState("");
   const [prompt,setPrompt] = useState("");
   const [message,setMessage] = useState("This is IRIS");
+  const navigate = useNavigate();
   console.log(state);
   
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -65,7 +69,16 @@ const Iris = () => {
     
   };
   recognition.continuous = true;
-  
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      navigate("/LoginPage")
+      // Do something after successful sign-out, e.g., redirect to a login page.
+    } catch (error) {
+      console.error('Error signing out:', error.message);
+      // Handle sign-out error here.
+    }
+  }
   recognition.onend = function () {
     if (stoppingR === false) {
       setTimeout(() => {
@@ -147,7 +160,7 @@ const Iris = () => {
     else{
       setPrompt(message);
     }
-
+    
   speech.volume = 1;
   speech.pitch = 1;
   speech.rate = 1;
@@ -164,6 +177,7 @@ const Iris = () => {
         <button onClick={toggle} class="button-46">{state ? 'Stop':'Start'}</button>
         <Response prompt ={prompt}/>
         <h3 className = "text-main">Your command:{answer}</h3>
+        <button onClick={handleSignOut} class="button-42">Sign out</button>
       </div>
         
     </div>
