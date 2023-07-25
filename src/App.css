@@ -104,6 +104,21 @@ input[type=text] {
     padding: 14px 16px;
   }
 }
+.button-42 {
+  background-color: #ff0000; /* Green */
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  position: absolute;
+  bottom:290px
+}
 .App {
   text-align: center;
 }
