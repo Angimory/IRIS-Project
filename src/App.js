@@ -4,9 +4,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Iris from "./Iris";
-import LoginPage from "./LoginPage";
-import Signup from "./Signup";
+import Iris from "./components/Iris";
+import LoginPage from "./components/LoginPage";
+import Signup from "./components/Signup";
 
 function App() {
  
