@@ -17,6 +17,10 @@ input[type=text] {
 .text-main {
   color :white
 }
+.error-text {
+  color: red;
+ 
+}
 .main {
   min-height: 100vh;
   position: relative;
