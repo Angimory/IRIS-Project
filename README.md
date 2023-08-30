@@ -57,6 +57,7 @@ To do/ Bugs:
     
   To do /Bugs:
       -Hook up OpenAi AI with IRIS for improved responses
+      
       -Make IRIS respond only once and wait
 
 # IRIS Model 0.4 (2023-05-30):
@@ -65,6 +66,7 @@ To do/ Bugs:
  
   Implemented:
       -Connected with OpenAi's API and is able to give responses to practically everything
+      
       -IRIS doesn't repeat its' response
 
   To do/Bugs:
