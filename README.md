@@ -61,3 +61,20 @@ To do/ Bugs:
   To do /Bugs:
     -Hook up OpenAi AI with IRIS for improved responses
     -Make IRIS respond only once and wait
+
+#IRIS Model 0.5 (2023-05-30):
+
+#IRIS Model 0.5 (2023-08-30):
+![image](https://github.com/Angimory/IRIS-Project/assets/96160225/42ba4268-d7af-427a-bd81-8c7a018c362e)
+Implemented:
+  -Sign up page
+
+  -Log in page
+
+  -Sign out button
+
+  -Text that shows user's command
+
+  -Stores all user information with Firebase
+
+ To do /Bugs:
