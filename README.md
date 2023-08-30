@@ -62,9 +62,14 @@ To do/ Bugs:
     -Hook up OpenAi AI with IRIS for improved responses
     -Make IRIS respond only once and wait
 
-#IRIS Model 0.5 (2023-05-30):
-
-#IRIS Model 0.5 (2023-08-30):
+#IRIS Model 0.4 (2023-05-30):
+  [!NOTE]
+  User interface is indentical as previous model
+  Implemented:
+    -Connected with OpenAi's API and is able to give responses to practically everything
+    -IRIS doesn't repeat its' response
+    
+#IRIS Model 0.5 (2023-07-24):
 ![image](https://github.com/Angimory/IRIS-Project/assets/96160225/42ba4268-d7af-427a-bd81-8c7a018c362e)
 Implemented:
   -Sign up page
@@ -78,3 +83,10 @@ Implemented:
   -Stores all user information with Firebase
 
  To do /Bugs:
+    -Make backend server.js run on aws
+    
+    -Dockerize the project
+    
+    -Show the user that the response is loading
+
+    -Show the user that an error has occured with giving away the actual code
