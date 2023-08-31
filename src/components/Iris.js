@@ -1,7 +1,7 @@
 import '../App.css';
 import { useState } from 'react';
 import Loader from './Loader';
-import {Response} from './Response';
+import Response from './Response';
 import sound from "../assets/sound.mp3"
 import React from 'react';
 import { auth, signOut} from '../firebase';
